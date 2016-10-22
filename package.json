@@ -1,0 +1,41 @@
+{
+  "name": "portalen-collector-news",
+  "version": "1.0.0",
+  "description": "Tfk Seneca content collector",
+  "license": "MIT",
+  "author": {
+    "name": "Geir Gåsodden",
+    "email": "geir.gasodden@pythonia.no",
+    "url": "https://github.com/zrrrzzt"
+  },
+  "bugs": {
+    "url": "https://github.com/telemark/tfk-seneca-collect-content/issues"
+  },
+  "homepage": "https://github.com/telemark/tfk-seneca-collect-content",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.6.1"
+  },
+  "scripts": {
+    "test": "standard && nsp check && tap --reporter=spec test/**/*.js",
+    "coverage": "tap test/**/*.js --coverage",
+    "coveralls": "tap --cov --coverage-report=lcov test/**/*.js && cat coverage/lcov.info | coveralls",
+    "setup": "npm install && node setup.js",
+    "standard-fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/telemark/tfk-seneca-collect-content.git"
+  },
+  "devDependencies": {
+    "coveralls": "2.11.14",
+    "nsp": "2.6.2",
+    "seneca": "3.2.1",
+    "standard": "8.4.0",
+    "tap": "7.1.2"
+  },
+  "dependencies": {
+    "tfk-unique-array": "1.0.2",
+    "wreck": "10.0.0"
+  }
+}
