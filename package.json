@@ -35,7 +35,7 @@
     "tap": "8.0.0"
   },
   "dependencies": {
-    "tfk-unique-array": "1.0.2",
+    "tfk-unique-array": "1.0.3",
     "wreck": "10.0.0"
   }
 }
