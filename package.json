@@ -32,7 +32,7 @@
     "nsp": "2.6.2",
     "seneca": "3.2.2",
     "standard": "8.4.0",
-    "tap": "8.0.0"
+    "tap": "8.0.1"
   },
   "dependencies": {
     "tfk-unique-array": "1.0.3",
