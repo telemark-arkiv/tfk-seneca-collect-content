@@ -1,5 +1,5 @@
 'use strict'
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 const Wreck = require('wreck')
 const querystring = require('querystring')
 const makeUnique = require('tfk-unique-array')
@@ -43,9 +43,9 @@ module.exports = function collectContent (options) {
         }
         console.error(error)
       } else {
-        result.data = makeUnique(payload.data)
+        result.data = makeUnique(payload.data ||[])
         if (verbose) {
-          console.log(`${tag} - ${logTime()}: got content - ${user} - found ${result.length}`)
+          console.log(`${tag} - ${logTime()}: got content - ${user} - found ${result.data.length}`)
         }
         seneca.act('role: info, info: content-collected', {data: result})
       }
