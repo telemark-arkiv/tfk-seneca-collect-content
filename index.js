@@ -7,10 +7,13 @@ const pkg = require('./package.json')
 
 module.exports = function collectContent (options) {
   const seneca = this
+  const tag = options.tag || 'tfk-seneca-collect-content'
 
-  seneca.add('cmd: collect-info, type:user', getContent)
+  seneca.add('cmd: collect-info, type: user', getContent)
 
   function getContent (args, callback) {
+    callback(null, {ok: true})
+
     const seneca = this
     const user = args.user
     var result = {
@@ -35,9 +38,7 @@ module.exports = function collectContent (options) {
         seneca.act('role: info, info: content-collected', {data: result})
       }
     })
-
-    callback(null, {ok: true})
   }
 
-  return options.tag || 'tfk-seneca-collect-content'
+  return tag
 }
