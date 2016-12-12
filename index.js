@@ -8,6 +8,8 @@ const pkg = require('./package.json')
 module.exports = function collectContent (options) {
   const seneca = this
   const tag = options.tag || 'tfk-seneca-collect-content'
+  const logTime = require('./lib/log-time')
+  const verbose = options.verbose || false
 
   seneca.add('cmd: collect-info, type: user', getContent)
 
@@ -30,11 +32,21 @@ module.exports = function collectContent (options) {
 
     const url = `${options.feedHostUrl}?${querystring.stringify(query)}`
 
+    if (verbose) {
+      console.log(`${tag} - ${logTime()}: collects content - ${user}`)
+    }
+
     Wreck.get(url, {json: true}, (error, response, payload) => {
       if (error) {
+        if (verbose) {
+          console.log(`${tag} - ${logTime()}: error collecting content - ${user} - ${JSON.stringify(error)}`)
+        }
         console.error(error)
       } else {
         result.data = makeUnique(payload.data)
+        if (verbose) {
+          console.log(`${tag} - ${logTime()}: got content - ${user} - found ${result.length}`)
+        }
         seneca.act('role: info, info: content-collected', {data: result})
       }
     })
