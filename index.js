@@ -43,7 +43,7 @@ module.exports = function collectContent (options) {
         }
         console.error(error)
       } else {
-        result.data = makeUnique(payload.data ||[])
+        result.data = makeUnique(payload.data || [])
         if (verbose) {
           console.log(`${tag} - ${logTime()}: got content - ${user} - found ${result.data.length}`)
         }
