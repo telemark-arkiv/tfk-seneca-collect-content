@@ -1,5 +1,5 @@
 'use strict'
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 const Wreck = require('wreck')
 const querystring = require('querystring')
 const makeUnique = require('tfk-unique-array')
@@ -8,6 +8,7 @@ const pkg = require('./package.json')
 module.exports = function collectContent (options) {
   const seneca = this
   const tag = options.tag || 'tfk-seneca-collect-content'
+  const timeout = options.timeout || 5000
   const logTime = require('./lib/log-time')
   const verbose = options.verbose || false
 
@@ -36,7 +37,7 @@ module.exports = function collectContent (options) {
       console.log(`${tag} - ${logTime()}: collects content - ${user}`)
     }
 
-    Wreck.get(url, {json: true}, (error, response, payload) => {
+    Wreck.get(url, {json: true, timeout: timeout}, (error, response, payload) => {
       if (error) {
         if (verbose) {
           console.log(`${tag} - ${logTime()}: error collecting content - ${user} - ${JSON.stringify(error)}`)

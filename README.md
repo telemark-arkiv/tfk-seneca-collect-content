@@ -38,7 +38,9 @@ const content = require('./index')
 const options = {
   type: 'news',
   channelId: 'news',
-  feedHostUrl: 'https://info.portalen.no/articles.json'
+  feedHostUrl: 'https://info.portalen.no/articles.json',
+  verbose: true, // optional
+  timeout: 2000 // optional, defaults to 5000 ms
 }
 
 seneca.add('role: info, info: content-collected', (args, callback) => {
