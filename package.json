@@ -29,7 +29,7 @@
     "url": "git://github.com/telemark/tfk-seneca-collect-content.git"
   },
   "devDependencies": {
-    "coveralls": "2.13.0",
+    "coveralls": "2.13.1",
     "nsp": "2.6.3",
     "seneca": "3.3.0",
     "standard": "10.0.2",
